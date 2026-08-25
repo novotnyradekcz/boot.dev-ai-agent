@@ -4,6 +4,8 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from prompts import system_prompt
+
 parser = argparse.ArgumentParser(description="Chatbot")
 _ = parser.add_argument("user_prompt", type=str, help="User prompt")
 _ = parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
@@ -21,6 +23,7 @@ client = OpenAI(
 )
 
 messages = [
+    {"role": "system", "content": system_prompt},
     {"role": "user", "content": args.user_prompt},
 ]
 
