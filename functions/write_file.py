@@ -1,5 +1,25 @@
 import os
 
+schema_write_file = {
+    "type": "function",
+    "function": {
+        "name": "write_file",
+        "description": "Writes to a file specified relative to the working directory and returns a report of how many characters were written",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File path to write into, relative to the working directory",
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The text to be written into the specified file",
+                },
+            },
+        },
+    },
+}
 
 def write_file(working_directory: str, file_path: str, content: str) -> str:
     try:

@@ -1,6 +1,31 @@
 import os
 import subprocess
 
+schema_run_python_file = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": "Runs a python file, specified relative to the working directory, and returns its STDOUT and STDERR",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File path to run, relative to the working directory",
+                },
+                "args": {
+                    "type": "array",
+                    "description": "A list of arguments to run the python file with",
+                    "items": {
+                        "type": "string",
+                        "description": "A command line argument to run the python file with"
+                    },
+                },
+            },
+            "required": ["file_path"]
+        },
+    },
+}
 
 def run_python_file(
     working_directory: str, file_path: str, args: list[str] | None = None
